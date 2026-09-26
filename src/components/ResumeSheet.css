@@ -62,9 +62,9 @@
     stroke-linejoin: round;
   }
 
-  /* Red-pen strokes draw in once, like an editor marking the page. */
-  .resume-sheet__mark,
-  .redline-draw {
+  /* Red-pen strokes draw in once, like an editor marking the page
+     (same recipe as the .redline-draw utility in base.css). */
+  .resume-sheet__mark {
     fill: none;
     stroke: var(--redline);
     stroke-linecap: round;
@@ -83,12 +83,6 @@
     animation: redline-fade 500ms ease-out 1500ms forwards;
   }
 
-  @keyframes redline-draw {
-    to {
-      stroke-dashoffset: 0;
-    }
-  }
-
   @keyframes redline-fade {
     to {
       opacity: 1;
@@ -96,8 +90,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .resume-sheet__mark,
-    .redline-draw {
+    .resume-sheet__mark {
       animation: none;
       stroke-dashoffset: 0;
     }

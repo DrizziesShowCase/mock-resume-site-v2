@@ -1,0 +1,76 @@
+@layer components {
+  .review__back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    justify-self: start;
+    min-height: 44px;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .review__back:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .review__form {
+    display: grid;
+    gap: var(--space-8);
+    max-width: 560px;
+  }
+
+  .review__demo {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: 14px 18px;
+    border-radius: var(--corner-md);
+    background: var(--surface-selected);
+    font-size: var(--text-sm);
+  }
+
+  .review__demo svg {
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .review__fieldset {
+    display: grid;
+    gap: var(--space-5);
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .review__legend {
+    margin-bottom: var(--space-2);
+    padding: 0;
+    font-family: var(--font-serif);
+    font-size: var(--display-sm);
+    font-weight: 600;
+    letter-spacing: var(--tracking-display);
+  }
+
+  .review__submit {
+    justify-self: start;
+  }
+
+  .review__sheet {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-6));
+  }
+
+  @media (max-width: 1023px) {
+    /* On one column the summary comes first, so people see what they're ordering. */
+    .review__sheet {
+      position: static;
+      order: -1;
+    }
+
+    .review__submit {
+      width: 100%;
+    }
+  }
+}

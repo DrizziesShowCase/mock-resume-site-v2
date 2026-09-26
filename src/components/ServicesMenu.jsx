@@ -17,13 +17,25 @@ export function ServicesMenu({ label }) {
   const triggerRef = useRef(null)
   const hoverTimer = useRef()
 
+  // While open: a click outside closes it, and Esc closes it from anywhere on
+  // the page (a hover-opened menu never receives focus), returning focus to
+  // the trigger.
   useEffect(() => {
     if (!open) return
     const onPointerDown = (e) => {
       if (!wrapperRef.current?.contains(e.target)) setOpen(false)
     }
+    const onKeyDown = (e) => {
+      if (e.key !== 'Escape') return
+      setOpen(false)
+      triggerRef.current?.focus()
+    }
     document.addEventListener('pointerdown', onPointerDown)
-    return () => document.removeEventListener('pointerdown', onPointerDown)
+    document.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown)
+      document.removeEventListener('keydown', onKeyDown)
+    }
   }, [open])
 
   useEffect(() => () => clearTimeout(hoverTimer.current), [])
@@ -32,13 +44,6 @@ export function ServicesMenu({ label }) {
     if (e.pointerType !== 'mouse') return
     clearTimeout(hoverTimer.current)
     hoverTimer.current = setTimeout(() => setOpen(next), HOVER_INTENT_MS)
-  }
-
-  const onKeyDown = (e) => {
-    if (e.key === 'Escape' && open) {
-      setOpen(false)
-      triggerRef.current?.focus()
-    }
   }
 
   const onBlur = (e) => {
@@ -51,7 +56,6 @@ export function ServicesMenu({ label }) {
       className="services-menu"
       onPointerEnter={scheduleHover(true)}
       onPointerLeave={scheduleHover(false)}
-      onKeyDown={onKeyDown}
       onBlur={onBlur}
     >
       <button

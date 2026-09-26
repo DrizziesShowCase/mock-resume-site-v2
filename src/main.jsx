@@ -6,13 +6,16 @@ import '@fontsource-variable/public-sans'
 import '@fontsource/caveat/latin-600.css' // handwriting in the hero illustration only
 import './styles/index.css'
 import App from './App.jsx'
+import { OrderProvider } from './order/OrderProvider.jsx'
 
 // HashRouter because GitHub Pages can't rewrite deep links to index.html
 // (docs/PRD.md §5.1).
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <HashRouter>
-      <App />
+      <OrderProvider>
+        <App />
+      </OrderProvider>
     </HashRouter>
   </StrictMode>,
 )

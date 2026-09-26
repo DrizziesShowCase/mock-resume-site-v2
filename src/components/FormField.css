@@ -1,0 +1,59 @@
+@layer components {
+  .form-field {
+    display: grid;
+    gap: 6px;
+  }
+
+  .form-field__label {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .form-field__optional {
+    font-weight: 400;
+    color: var(--text-secondary);
+  }
+
+  .form-field__hint {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  /* Inputs sit slightly darker than the page: "inset" reads as "type here". */
+  .form-field__input {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 14px;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--corner-md);
+    background: var(--surface-card);
+    font-size: var(--text-md);
+    transition:
+      border-color var(--dur-quick) var(--ease-settle),
+      box-shadow var(--dur-quick) var(--ease-settle);
+  }
+
+  .form-field__input:hover {
+    border-color: var(--ink);
+  }
+
+  .form-field__input:focus {
+    border-color: var(--ink);
+    box-shadow: 0 0 0 3px oklch(0.55 0.15 255 / 0.25);
+    outline: none;
+  }
+
+  .form-field--error .form-field__input {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 1px var(--danger);
+  }
+
+  .form-field__error {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--danger);
+  }
+}

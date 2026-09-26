@@ -1,0 +1,89 @@
+/* Shared by TierOption and AddonOption: a <label> card wrapping a real
+   radio/checkbox, so keyboard behavior (Tab, arrows, Space) is native. */
+@layer components {
+  .option-card {
+    position: relative;
+    display: flex;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--corner-md);
+    background: var(--surface-card);
+    cursor: pointer;
+    transition:
+      border-color var(--dur-quick) var(--ease-settle),
+      background-color var(--dur-quick) var(--ease-settle),
+      box-shadow var(--dur-quick) var(--ease-settle);
+  }
+
+  .option-card:hover {
+    border-color: var(--ink);
+    box-shadow: var(--lift-2);
+  }
+
+  .option-card:has(:checked) {
+    border-color: var(--ink);
+    background: var(--surface-selected);
+    box-shadow: inset 0 0 0 1px var(--ink);
+  }
+
+  .option-card:has(:focus-visible) {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  /* The real input stays in the accessibility tree and tab order; the card draws its state. */
+  .option-card__input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .option-indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid var(--rule-strong);
+    background: var(--surface-card);
+    color: var(--paper);
+    transition:
+      background-color var(--dur-quick) var(--ease-settle),
+      border-color var(--dur-quick) var(--ease-settle);
+  }
+
+  .option-indicator--radio {
+    border-radius: var(--corner-pill);
+  }
+
+  .option-indicator--check {
+    width: 20px;
+    height: 20px;
+    border-radius: var(--corner-sm);
+  }
+
+  .option-indicator svg {
+    opacity: 0;
+    transition: opacity var(--dur-quick) var(--ease-settle);
+  }
+
+  .option-card:has(:checked) .option-indicator {
+    border-color: var(--ink);
+    background: var(--ink);
+  }
+
+  .option-card:has(:checked) .option-indicator svg {
+    opacity: 1;
+  }
+
+  .option-group {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+}

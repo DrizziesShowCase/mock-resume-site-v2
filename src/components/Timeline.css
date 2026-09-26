@@ -1,0 +1,66 @@
+@layer components {
+  .timeline {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .timeline__step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: var(--space-4);
+    padding-bottom: var(--space-8);
+  }
+
+  /* The connecting rule runs from each marker down to the next. */
+  .timeline__step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    top: 34px;
+    bottom: 6px;
+    left: 20px;
+    width: 1px;
+    background: var(--rule-strong);
+  }
+
+  .timeline__marker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 28px;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--corner-sm);
+    background: var(--surface-card);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .timeline__body {
+    display: grid;
+    gap: 6px;
+    padding-top: 2px;
+  }
+
+  .timeline__title {
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  .timeline__text {
+    max-width: 60ch;
+    color: var(--text-secondary);
+  }
+
+  .timeline__link {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-weight: 600;
+    text-underline-offset: 4px;
+  }
+}

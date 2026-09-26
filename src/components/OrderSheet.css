@@ -1,0 +1,213 @@
+@layer components {
+  .order-sheet {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 36px 34px 28px;
+    border-radius: var(--corner-sm);
+    background: var(--surface-card);
+    box-shadow: var(--lift-2), 0 18px 44px oklch(0.26 0.05 262 / 0.09);
+  }
+
+  .order-sheet__letterhead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: -6px;
+  }
+
+  .order-sheet__brand {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .order-sheet__kind {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .order-sheet__for {
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .order-sheet__placeholder {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .order-sheet__meta {
+    margin-top: -10px;
+    padding-bottom: 14px;
+    border-bottom: 3px double var(--rule-strong);
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .order-sheet__cta {
+    width: 100%;
+  }
+
+  .order-sheet__cta:disabled {
+    background: oklch(0.9 0.008 262);
+    color: var(--graphite);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  .order-sheet__helper {
+    margin-top: -8px;
+    font-size: 13px;
+    text-align: center;
+    color: var(--text-secondary);
+  }
+
+  .order-sheet__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .order-sheet__guarantee {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .order-sheet__clear,
+  .order-sheet__edit {
+    min-height: 44px;
+    padding: 0 var(--space-1);
+    border: 0;
+    background: none;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+
+  .order-sheet__edit {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+  }
+
+  /* Line items — shared with the confirmation letter */
+  .order-lines {
+    display: grid;
+    gap: 18px;
+  }
+
+  .order-lines__section {
+    display: grid;
+    gap: 10px;
+  }
+
+  .order-lines__section ul {
+    display: grid;
+    gap: 10px;
+  }
+
+  .order-lines__heading {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .order-lines__line {
+    display: grid;
+    gap: 2px;
+    animation: order-line-in var(--dur-open) var(--ease-settle);
+  }
+
+  .order-lines__row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    font-size: 15px;
+  }
+
+  .order-lines__tick {
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  /* Quicker than the hero's redline-draw: it plays on every line added. */
+  .order-lines__tick-path {
+    fill: none;
+    stroke: var(--redline);
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: redline-draw 400ms var(--ease-settle) 120ms forwards;
+  }
+
+  .order-lines__label {
+    font-weight: 600;
+  }
+
+  .order-lines__section + .order-lines__section .order-lines__label {
+    font-weight: 400;
+  }
+
+  .order-lines__leader {
+    flex: 1;
+    min-width: var(--space-4);
+    border-bottom: 1.5px dotted var(--rule-strong);
+    transform: translateY(-4px);
+  }
+
+  .order-lines__note {
+    padding-left: 22px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--danger);
+  }
+
+  .order-lines__empty {
+    font-size: var(--text-sm);
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+
+  .order-lines__total {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-top: var(--space-4);
+    border-top: 3px double var(--rule-strong);
+  }
+
+  .order-lines__total .order-lines__heading {
+    color: var(--text-primary);
+  }
+
+  .order-lines__total-amount {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: var(--tracking-display);
+  }
+
+  @keyframes order-line-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+}

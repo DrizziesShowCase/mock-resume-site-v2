@@ -1,0 +1,145 @@
+@layer components {
+  .confirmation {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-8);
+    padding-block: var(--space-12) var(--space-20);
+  }
+
+  .letter {
+    display: grid;
+    gap: var(--space-5);
+    width: 100%;
+    max-width: 720px;
+    padding: clamp(var(--space-8), 6vw, 64px);
+    border-radius: var(--corner-sm);
+    background: var(--surface-card);
+    box-shadow: var(--lift-2), 0 24px 56px oklch(0.26 0.05 262 / 0.1);
+  }
+
+  .letter__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-6);
+    padding-bottom: var(--space-4);
+    border-bottom: 3px double var(--rule-strong);
+  }
+
+  .letter__brand {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .letter__date {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .letter__title {
+    margin-top: var(--space-4);
+    font-size: var(--display-md);
+  }
+
+  .letter__salutation {
+    margin-top: var(--space-2);
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+  }
+
+  .letter__para {
+    max-width: 60ch;
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    line-height: 1.65;
+    color: var(--text-body);
+  }
+
+  .letter__para strong {
+    font-weight: 600;
+    color: var(--text-primary);
+    overflow-wrap: anywhere;
+  }
+
+  .letter__number {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-6);
+    margin-block: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    border: 1px dashed var(--rule-strong);
+    border-radius: var(--corner-md);
+    background: var(--surface-inset);
+  }
+
+  .letter__number-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .letter__number-value {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .letter__sign {
+    display: grid;
+    gap: var(--space-1);
+    margin-top: var(--space-6);
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+  }
+
+  /* Handwritten in ink, not red: this mark signs off, it doesn't edit. */
+  .letter__signature {
+    font-family: 'Caveat', cursive;
+    font-size: 2.25rem;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  .letter__signed {
+    max-width: 280px;
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--rule-strong);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .confirmation__demo {
+    font-size: var(--text-sm);
+    text-align: center;
+    color: var(--text-secondary);
+  }
+
+  .confirmation__next {
+    display: grid;
+    gap: var(--space-5);
+    width: 100%;
+    max-width: 720px;
+    margin-top: var(--space-8);
+  }
+
+  .confirmation__next-title {
+    margin-bottom: var(--space-4);
+    font-size: var(--display-sm);
+  }
+
+  .confirmation__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+}

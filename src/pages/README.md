@@ -7,10 +7,10 @@ copy or prices themselves.
 | Route | Page | Milestone |
 |---|---|---|
 | `/` | `Home` | done (M1) |
-| `/pricing`, `/pricing/review`, `/pricing/confirmation` | `Pricing`, `PricingReview`, `PricingConfirmation` | M2 |
+| `/pricing`, `/pricing/review`, `/pricing/confirmation` | `Pricing`, `PricingReview`, `PricingConfirmation` | done (M2) |
 | `/why-us` | `WhyUs` | M3 |
 | `/process` | `Process` | M3 |
 | `/faq` | `Faq` | M3 |
 | `*` | `NotFound` | done |
 
-Pricing, Why Us, Process and FAQ are still `PagePlaceholder`s.
+Why Us, Process and FAQ are still `PagePlaceholder`s. `Pricing.css` holds the layout shared by the build and review pages.

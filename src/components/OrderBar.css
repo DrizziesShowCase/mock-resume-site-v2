@@ -1,0 +1,121 @@
+@layer components {
+  .order-bar {
+    display: none;
+  }
+
+  @media (max-width: 1023px) {
+    .order-bar {
+      position: fixed;
+      inset-inline: 0;
+      bottom: 0;
+      z-index: var(--z-sticky);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--gutter) calc(var(--space-3) + env(safe-area-inset-bottom));
+      background: var(--surface-card);
+      border-top: 1px solid var(--rule);
+      box-shadow: 0 -4px 16px oklch(0.26 0.05 262 / 0.08);
+    }
+
+    /* Keep the footer's last lines clear of the fixed bar. */
+    body:has(.order-bar) .site-footer {
+      padding-bottom: calc(var(--space-8) + 76px);
+    }
+  }
+
+  .order-bar__summary {
+    display: flex;
+    flex: 1;
+    align-items: baseline;
+    gap: var(--space-2);
+    min-height: 44px;
+    padding: 0;
+    border: 0;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .order-bar__summary svg {
+    align-self: center;
+    color: var(--text-secondary);
+  }
+
+  .order-bar__items {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+  }
+
+  .order-bar__total {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-display);
+  }
+
+  .order-bar__disabled:disabled {
+    background: oklch(0.9 0.008 262);
+    color: var(--graphite);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  .order-bar__sheet {
+    width: 100%;
+    max-width: 560px;
+    max-height: 88dvh;
+    margin: auto auto 0;
+    padding: 0;
+    border: 0;
+    border-radius: var(--corner-md) var(--corner-md) 0 0;
+    background: transparent;
+    overflow: visible;
+  }
+
+  .order-bar__sheet[open] {
+    animation: order-sheet-up var(--dur-open) var(--ease-settle);
+  }
+
+  .order-bar__sheet::backdrop {
+    background: oklch(0.26 0.05 262 / 0.4);
+  }
+
+  .order-bar__sheet-inner {
+    position: relative;
+    max-height: 88dvh;
+    overflow-y: auto;
+    padding-bottom: env(safe-area-inset-bottom);
+    border-radius: var(--corner-md) var(--corner-md) 0 0;
+    background: var(--surface-card);
+  }
+
+  /* Extra top padding leaves the close button its own row. */
+  .order-bar__sheet .order-sheet {
+    padding-top: 60px;
+    box-shadow: none;
+  }
+
+  .order-bar__close {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: var(--corner-md);
+    background: none;
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+
+  @keyframes order-sheet-up {
+    from {
+      transform: translateY(24px);
+      opacity: 0;
+    }
+  }
+}

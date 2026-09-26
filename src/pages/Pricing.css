@@ -1,0 +1,84 @@
+/* Layout for the order pages (/pricing, /pricing/review). */
+@layer components {
+  .pricing {
+    padding-block: var(--space-12) var(--space-20);
+  }
+
+  .pricing__intro {
+    display: grid;
+    gap: var(--space-3);
+    margin-bottom: var(--space-10);
+  }
+
+  .pricing__title {
+    font-size: var(--display-md);
+  }
+
+  .pricing__lead {
+    max-width: 56ch;
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+  }
+
+  .pricing__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 380px;
+    align-items: start;
+    gap: var(--space-12);
+  }
+
+  .pricing__steps {
+    display: grid;
+    gap: var(--space-16);
+  }
+
+  .pricing__step {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .pricing__step-title {
+    margin-top: calc(-1 * var(--space-2));
+    font-size: var(--display-sm);
+  }
+
+  .pricing__optional {
+    margin-left: var(--space-2);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--text-secondary);
+  }
+
+  .pricing__note {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: 14px 18px;
+    border-radius: var(--corner-md);
+    background: var(--surface-selected);
+    font-size: var(--text-sm);
+  }
+
+  .pricing__note svg {
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .pricing__sheet {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-6));
+  }
+
+  @media (max-width: 1023px) {
+    .pricing__grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* The mobile OrderBar takes over on the build page. */
+    .pricing__sheet {
+      display: none;
+    }
+  }
+}

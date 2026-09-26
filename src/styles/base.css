@@ -117,4 +117,29 @@
   .tabular {
     font-variant-numeric: tabular-nums;
   }
+
+  /* A red-pen stroke that draws itself once. Put it on an SVG path with
+     pathLength="1". Reduced motion shows the finished stroke. */
+  .redline-draw {
+    fill: none;
+    stroke: var(--redline);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: redline-draw 900ms var(--ease-settle) 500ms forwards;
+  }
+
+  @keyframes redline-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .redline-draw {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+  }
 }

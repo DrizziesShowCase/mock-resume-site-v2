@@ -251,7 +251,7 @@ contrast script before build.
 - **Body/UI: Public Sans** (variable). A neutral, highly legible, institutional sans. It reads "trustworthy" without being the default Inter.
 - **Prices & order numbers:** Public Sans with `font-variant-numeric: tabular-nums` so the Order Sheet columns line up.
 - **Scale:** Major Third (1.25) on a 16px body. Fluid display sizes use `clamp()`, e.g. hero `clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem)`.
-- **Handwriting: Caveat 600**, only for the red-pen notes inside the hero illustration.
+- **Handwriting: Caveat 600**, only for the red-pen notes in the hero illustration and the signature on the confirmation letter.
 - **Eyebrows:** Public Sans 600, 12px, `letter-spacing: 0.08em`, small caps, followed by a hairline rule (signature item 4).
 - **Line length:** body copy is capped at ~68ch.
 
@@ -352,7 +352,10 @@ is *derived* from state and never stored.
 | 2026-09-26 | Hamburger below 960px, not 768px | Five nav items + CTA don't fit comfortably at tablet width. |
 | 2026-09-26 | M1: tier cards show only what differs, no "see everything" expander | The shared inclusions strip above the cards already lists the rest (matches the approved mockup). |
 | 2026-09-26 | M1: Home add-on teasers are Cover Letter, LinkedIn, Interview Prep, Professional Bio | Career Coaching isn't an orderable add-on in v1; every teaser deep-links into the configurator. |
-| 2026-09-26 | Caveat (handwriting) used only inside the hero illustration | Sells the redline signature; never used for UI text. |
+| 2026-09-26 | Caveat (handwriting) used only for the hero illustration's red-pen notes and the confirmation letter's signature | Sells the redline/letter signature; never used for UI text. |
+| 2026-09-26 | M2: a placed order persists until "Start a new order" (or the next visit to /pricing), not cleared on the confirmation view | Refreshing the confirmation page keeps working. |
+| 2026-09-26 | M2: order bar + bottom sheet below 1024px (not only phones) | The sidebar sheet needs ~380px beside the steps. |
+| 2026-09-26 | M2: option cards are `<label>`s around real radio/checkbox inputs | Native arrow-key and Space behavior, with no custom ARIA widget to maintain. |
 
 ## 12. Milestones
 

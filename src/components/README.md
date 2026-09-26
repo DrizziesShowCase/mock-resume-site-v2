@@ -19,5 +19,10 @@ rules sit in `@layer components`, and uses only tokens from `src/styles/tokens.c
   `ServiceCard`, `LogoStrip`, `CtaBand`
 - `Icon` — maps icon names from `src/data/` to lucide components
 
-**Planned** (docs/PRD.md §7.7): selectable `TierCard` variant, `AddonCard`, `OrderSheet` (M2);
-`ValuePropGrid`, `ComparisonTable`, `TabbedSteps`, `Timeline`, `FaqAccordion`, `FormField` (M3).
+**Order flow (M2, built):**
+- `TierOption` / `AddonOption` — `<label>` cards around real radio/checkbox inputs (shared styles in `OptionCard.css`)
+- `OrderSheet` — the signature résumé-styled summary; exports `OrderLines` (also used by the confirmation letter)
+- `OrderBar` — mobile summary bar + bottom-sheet `<dialog>`
+- `FormField` — label/hint/error wiring; `Timeline` — numbered steps (confirmation now, Process page in M3)
+
+**Planned** (docs/PRD.md §7.7, M3): `ValuePropGrid`, `ComparisonTable`, `TabbedSteps`, `FaqAccordion`.
