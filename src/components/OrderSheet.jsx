@@ -33,13 +33,15 @@ function Line({ label, amount, note }) {
 }
 
 // Line items with dotted leaders, like the dates column of a résumé. Shared by
-// the Order Sheet and the confirmation letter.
-export function OrderLines({ order }) {
+// the Order Sheet and the confirmation letter; `headingLevel` keeps the page's
+// heading outline sequential in both places.
+export function OrderLines({ order, headingLevel = 3 }) {
   const blocked = new Set(order.blockedAddons.map((a) => a.id))
+  const Heading = `h${headingLevel}`
   return (
     <div className="order-lines">
       <div className="order-lines__section">
-        <h3 className="order-lines__heading">Résumé</h3>
+        <Heading className="order-lines__heading">Résumé</Heading>
         {order.tier ? (
           <ul role="list">
             <Line key={order.tier.id} label={`${order.tier.name} résumé`} amount={formatPrice(order.tier.price)} />
@@ -49,7 +51,7 @@ export function OrderLines({ order }) {
         )}
       </div>
       <div className="order-lines__section">
-        <h3 className="order-lines__heading">Add-ons</h3>
+        <Heading className="order-lines__heading">Add-ons</Heading>
         {order.addons.length ? (
           <ul role="list">
             {order.addons.map((a) => (

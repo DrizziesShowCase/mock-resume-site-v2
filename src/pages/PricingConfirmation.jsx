@@ -61,7 +61,7 @@ export function PricingConfirmation() {
             <span className="letter__number-value tabular">{placed.number}</span>
           </div>
 
-          <OrderLines order={order} />
+          <OrderLines order={order} headingLevel={2} />
 
           <div className="letter__sign">
             <p>Sincerely,</p>

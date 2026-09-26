@@ -19,12 +19,12 @@
     color: var(--text-secondary);
   }
 
-  /* Inputs sit slightly darker than the page: "inset" reads as "type here". */
+  /* Inputs are fresh white sheets with a firm edge, so empty fields are easy to find. */
   .form-field__input {
     width: 100%;
     min-height: 48px;
     padding: 0 14px;
-    border: 1px solid var(--rule-strong);
+    border: 1px solid var(--control-border);
     border-radius: var(--corner-md);
     background: var(--surface-card);
     font-size: var(--text-md);

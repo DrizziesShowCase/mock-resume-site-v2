@@ -30,6 +30,9 @@
     --rule: oklch(0.26 0.055 262 / 0.12);
     --rule-strong: oklch(0.26 0.055 262 / 0.3);
     --rule-on-ink: oklch(0.985 0.006 85 / 0.14);
+    /* Edges that identify a control (inputs, checkbox/radio boxes) need 3:1
+       against their surroundings (WCAG 1.4.11); ~4:1 on paper and white. */
+    --control-border: var(--pencil);
     --focus-ring: var(--focus-blue);
     --danger: var(--redline);
     --success: oklch(0.52 0.12 155);
@@ -59,8 +62,8 @@
     --space-24: 96px;
 
     /* Type */
-    --font-serif: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
-    --font-sans: 'Public Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-serif: 'Source Serif 4 Variable', 'Source Serif Fallback', Georgia, serif;
+    --font-sans: 'Public Sans', 'Public Sans Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --text-xs: 0.75rem; /* 12 */
     --text-sm: 0.875rem; /* 14 */
     --text-md: 1rem; /* 16 */

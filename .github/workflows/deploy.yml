@@ -1,10 +1,12 @@
-# Builds the site and publishes dist/ to GitHub Pages on every push to master.
-# One-time setup in the repo: Settings → Pages → Source: "GitHub Actions".
-name: Deploy to GitHub Pages
+# Checks, then builds and publishes dist/ to GitHub Pages on every push to master.
+# Pull requests run the checks only. One-time setup in the repo:
+# Settings → Pages → Source: "GitHub Actions".
+name: Test and deploy
 
 on:
   push:
     branches: [master]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -13,11 +15,11 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,13 +29,24 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
-      - run: npm run build
+      - run: npm test
+      - run: npx playwright install --with-deps chromium
+      # Builds the site and runs the browser suite (order flow, pages, axe) against it.
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-traces
+          path: test-results/
+          retention-days: 7
       - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
         with:
           path: dist
 
   deploy:
-    needs: build
+    needs: test
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

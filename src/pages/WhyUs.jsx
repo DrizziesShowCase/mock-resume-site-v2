@@ -21,7 +21,10 @@ export function WhyUs() {
         lead="Most résumé services fill in a form and reformat what you already had. We start with a conversation, find the results your current résumé leaves out, and write for the role you want next."
       />
 
-      <Section compact label="What you get">
+      <Section compact labelledBy="values-title">
+        <h2 id="values-title" className="sr-only">
+          What you get
+        </h2>
         <ValuePropGrid items={valueProps} />
       </Section>
 

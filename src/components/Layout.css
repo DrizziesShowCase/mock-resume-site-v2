@@ -9,8 +9,15 @@
     flex: 1;
   }
 
-  .layout__main:focus {
+  /* Regions that receive focus programmatically on navigation (main, anchor
+     targets) aren't controls, so they don't draw a focus ring. */
+  .layout__main:focus,
+  .layout__main > [tabindex='-1']:focus {
     outline: none;
+  }
+
+  .route-loading {
+    min-height: 100dvh;
   }
 
   html:has(dialog[open]) {

@@ -330,7 +330,7 @@ is *derived* from state and never stored.
 
 ## 10. Technical Requirements
 - **Dependencies:** React 19 + Vite 8 (already scaffolded), plus `react-router-dom` and `lucide-react`. No UI library. CSS is plain, organized as `tokens.css`, `base.css`, and per-component CSS files, with `@layer tokens, base, components, utilities`.
-- **Fonts:** self-host via `@fontsource-variable/source-serif-4` and `@fontsource-variable/public-sans`, subset to Latin, `font-display: swap`.
+- **Fonts:** self-hosted via Fontsource: Source Serif 4 variable (optical sizing), Public Sans static Latin weights 400–700, Caveat 600 Latin. `font-display: swap` with metric-matched fallbacks (see `src/styles/base.css`).
 - **SEO:** per-route `<title>` and meta description with a `| Shortlist` suffix, set with React 19's native `<title>`/`<meta>` hoisting. Open Graph image.
 - **Deploy:** `base: './'` in `vite.config.js` (relative assets work under any repo name because HashRouter serves every page from `index.html`) and `.github/workflows/deploy.yml` (lint → build → `actions/deploy-pages`).
 - **Quality:** `oxlint` is clean. There are component tests for the order reducer (Vitest) at minimum.
@@ -359,6 +359,14 @@ is *derived* from state and never stored.
 | 2026-09-26 | M3: newsletter signup on Why Us left out | It was optional; a second fake form adds nothing the contact form doesn't already show. |
 | 2026-09-26 | M3: contact form fields are name, email, topic, message (all required) | Topic gives the select control a real job; validation is shared with the review form via `src/lib/validation.js`. |
 | 2026-09-26 | M3: comparison table keeps explicit ARIA table roles when restacked as cards on mobile | Some browsers drop table semantics when `display` changes. |
+| 2026-09-26 | M4: Playwright e2e suite (order flow, pages, axe) runs in CI before every deploy | The order flow is the part most likely to break silently. |
+| 2026-09-26 | M4: focus moves to `<main>` (or the anchor target) on navigation | Keyboard and screen reader users would otherwise stay on a link that no longer exists. |
+| 2026-09-26 | M4: `--control-border` token (~4:1) for input and checkbox/radio edges | The hairline `--rule-strong` was 1.4:1, below WCAG 1.4.11's 3:1 for control boundaries. |
+| 2026-09-26 | M4: every page except Home lazy-loads | Smaller first load; Layout waits for lazily rendered anchor targets. |
+| 2026-09-26 | M4: metric-matched fallback fonts, per weight | Removes font-swap layout shift (mobile CLS 0.16 → ~0). |
+| 2026-09-26 | M4: Public Sans static Latin files; Source Serif stays variable | Serif optical sizing gives the finer display cut in headlines; Public Sans has no optical axis, so static is smaller with no visual change. |
+| 2026-09-26 | M4: motion reviewed, no changes | Transitions are 150–220ms on transform/opacity; the one-time 900ms redline draw is decorative; reduced motion shows finished states everywhere. |
+| 2026-09-26 | M4: mobile Lighthouse performance (78–88) accepted for v1 | Not a PRD target; limited by React startup under 4× CPU throttling. Font preloading is the next lever. |
 
 ## 12. Milestones
 
@@ -372,14 +380,14 @@ is *derived* from state and never stored.
 | **Phase 2 (later)** | Individual service pages, a `/resources/recruiters/:city` programmatic route, blog/sample résumés, team/about, optional dark mode. |
 
 ## 13. Acceptance Criteria (v1 done when…)
-- [ ] All 5 pages + 404 are reachable from the nav on the deployed GitHub Pages URL.
-- [ ] Choosing a tier and 2 add-ons on mobile and desktop shows the correct total. Refresh keeps it. Review → confirmation shows an order number, and "Start over" clears it.
-- [ ] LinkedIn-without-tier shows the dependency note. "Review" is disabled until a tier is chosen.
-- [ ] Deep links `?tier=`, `?addon=`, and `?tab=` preselect correctly.
-- [ ] No tier/add-on/testimonial text is duplicated in JSX. A grep for prices in `src/pages` and `src/components` finds nothing.
-- [ ] The entire order flow can be completed by keyboard alone. axe reports 0 serious/critical issues.
-- [ ] Lighthouse ≥ 95 in all four categories on Home and Pricing (desktop).
-- [ ] The portfolio disclaimer is visible in the footer of every page.
+- [ ] All 5 pages + 404 are reachable from the nav on the deployed GitHub Pages URL. *(Verified locally against the production build; waiting on the repo + first deploy.)*
+- [x] Choosing a tier and 2 add-ons on mobile and desktop shows the correct total. Refresh keeps it. Review → confirmation shows an order number, and "Start over" clears it. *(e2e: order-flow.spec.js)*
+- [x] LinkedIn-without-tier shows the dependency note. "Review" is disabled until a tier is chosen. *(e2e)*
+- [x] Deep links `?tier=`, `?addon=`, and `?tab=` preselect correctly. *(e2e)*
+- [x] No tier/add-on/testimonial text is duplicated in JSX. A grep for prices in `src/pages` and `src/components` finds nothing. *(checked 2026-09-26)*
+- [x] The entire order flow can be completed by keyboard alone. axe reports 0 serious/critical issues. *(e2e: a11y.spec.js, every route and interactive state, desktop + mobile)*
+- [x] Lighthouse ≥ 95 in all four categories on Home and Pricing (desktop). *(Home 98/100/100/100, Pricing 99/100/100/100)*
+- [x] The portfolio disclaimer is visible in the footer of every page. *(e2e)*
 
 ## 14. Open Questions
 None open. The repo name no longer blocks deploy (`base: './'`); it's only needed when the GitHub repo is created.

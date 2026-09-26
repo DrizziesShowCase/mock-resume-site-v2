@@ -31,3 +31,6 @@ rules sit in `@layer components`, and uses only tokens from `src/styles/tokens.c
 - `TabbedSteps` — WAI-ARIA tabs synced to `?tab=`; renders `Timeline`
 - `FaqAccordion` — native `<details>`, grouped; `ContactForm` — demo form with validation + success state
 - `FormField` also renders `as="select"` and `as="textarea"`
+
+`Layout` moves focus to `<main>` (or the `#anchor` target) after navigation and
+waits for lazily loaded pages to render their anchor targets.

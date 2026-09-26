@@ -41,6 +41,41 @@
   }
 }
 
+/* Metric-matched fallbacks: while the web fonts load, text is set in a local
+   font scaled to the same width, so lines don't re-wrap (and the layout
+   doesn't jump) when the real font swaps in. Widths differ by weight, so each
+   weight range gets its own face. Ratios measured in Chrome at the sizes each
+   weight is used: Source Serif 4 (variable, optical sizing) ≈ 1.12× Times New
+   Roman for 400–500 body text, ≈ 1.0× for 600 headlines; Public Sans ≈ 1.05×
+   Arial (400–500), 0.99× (600–700). */
+@font-face {
+  font-family: 'Source Serif Fallback';
+  src: local('Times New Roman'), local('Times'), local('Liberation Serif');
+  font-weight: 400 500;
+  size-adjust: 112%;
+}
+
+@font-face {
+  font-family: 'Source Serif Fallback';
+  src: local('Times New Roman Bold'), local('Times-Bold'), local('Liberation Serif Bold');
+  font-weight: 600 700;
+  size-adjust: 100%;
+}
+
+@font-face {
+  font-family: 'Public Sans Fallback';
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  font-weight: 400 500;
+  size-adjust: 105%;
+}
+
+@font-face {
+  font-family: 'Public Sans Fallback';
+  src: local('Arial Bold'), local('Helvetica Bold'), local('Liberation Sans Bold');
+  font-weight: 600 700;
+  size-adjust: 99%;
+}
+
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
