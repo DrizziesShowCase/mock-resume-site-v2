@@ -7,8 +7,8 @@ checkout/payment processing. Deployed as a static site to GitHub Pages.
 
 **Stack:** React 19 + Vite, `react-router-dom` (HashRouter), `lucide-react` icons,
 self-hosted fonts via Fontsource. Plain CSS with cascade layers — no component library.
-**Status:** M0 (foundations), M1 (Home) and M2 (order flow) done. Why Us, Process
-and FAQ are placeholders. Next is M3 (content pages). See `docs/PRD.md` §12.
+**Status:** M0–M3 done — every v1 page is built. Next is M4 (polish: motion,
+a11y audit, Lighthouse, README). See `docs/PRD.md` §12.
 
 ## Where things are
 
@@ -19,7 +19,7 @@ and FAQ are placeholders. Next is M3 (content pages). See `docs/PRD.md` §12.
 | `src/styles/` | `tokens.css` (all design tokens), `base.css` (reset, base, utilities), `index.css` (declares layer order). |
 | `src/components/` | Reusable UI + site chrome (`Layout`, `SiteHeader`, `ServicesMenu`, `MobileNav`, `SiteFooter`, `ButtonLink`, …). See `src/components/README.md`. |
 | `src/order/` | Order state: pure reducer/selectors/validation in `orderState.js` (unit tested, `npm test`), `OrderProvider` (sessionStorage), `useOrder` hook. |
-| `src/lib/` | Small shared helpers (`format.js` → `formatPrice`). |
+| `src/lib/` | Small shared helpers: `format.js` (`formatPrice`), `validation.js` (email), `contactForm.js` (+ tests). |
 | `src/pages/` | One component per route; routes are wired in `src/App.jsx`. |
 | `src/data/` | All site content (tiers, add-ons, testimonials, nav, FAQ, process steps, …). See `src/data/README.md`. |
 | `.github/workflows/deploy.yml` | Lint + build + deploy to GitHub Pages on push to `master`. |
@@ -27,9 +27,8 @@ and FAQ are placeholders. Next is M3 (content pages). See `docs/PRD.md` §12.
 
 ## Next steps
 
-1. **M3 Content pages** — Why Us, Process, FAQ & Contact.
-2. **M4 Polish** — motion, a11y audit, Lighthouse, README with screenshots.
-3. **Deploy** — create the GitHub repo, push, and set Settings → Pages → Source to "GitHub Actions". No repo name config is needed (`base: './'`).
+1. **M4 Polish** — motion, a11y audit, Lighthouse, README with screenshots.
+2. **Deploy** — create the GitHub repo, push, and set Settings → Pages → Source to "GitHub Actions". No repo name config is needed (`base: './'`).
 
 ## Conventions
 

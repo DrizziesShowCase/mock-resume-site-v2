@@ -33,6 +33,32 @@
       box-shadow var(--dur-quick) var(--ease-settle);
   }
 
+  .form-field__control {
+    position: relative;
+  }
+
+  .form-field__control--textarea .form-field__input {
+    min-height: 144px;
+    padding-block: 12px;
+    line-height: 1.5;
+    resize: vertical;
+  }
+
+  .form-field__control--select .form-field__input {
+    padding-inline-end: 44px;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .form-field__chevron {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    translate: 0 -50%;
+    pointer-events: none;
+    color: var(--text-secondary);
+  }
+
   .form-field__input:hover {
     border-color: var(--ink);
   }
@@ -46,6 +72,13 @@
   .form-field--error .form-field__input {
     border-color: var(--danger);
     box-shadow: 0 0 0 1px var(--danger);
+  }
+
+  /* An invalid field still needs a visible focus state. */
+  .form-field--error .form-field__input:focus {
+    box-shadow:
+      0 0 0 1px var(--danger),
+      0 0 0 4px oklch(0.53 0.17 30 / 0.22);
   }
 
   .form-field__error {

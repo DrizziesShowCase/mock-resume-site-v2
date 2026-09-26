@@ -356,6 +356,9 @@ is *derived* from state and never stored.
 | 2026-09-26 | M2: a placed order persists until "Start a new order" (or the next visit to /pricing), not cleared on the confirmation view | Refreshing the confirmation page keeps working. |
 | 2026-09-26 | M2: order bar + bottom sheet below 1024px (not only phones) | The sidebar sheet needs ~380px beside the steps. |
 | 2026-09-26 | M2: option cards are `<label>`s around real radio/checkbox inputs | Native arrow-key and Space behavior, with no custom ARIA widget to maintain. |
+| 2026-09-26 | M3: newsletter signup on Why Us left out | It was optional; a second fake form adds nothing the contact form doesn't already show. |
+| 2026-09-26 | M3: contact form fields are name, email, topic, message (all required) | Topic gives the select control a real job; validation is shared with the review form via `src/lib/validation.js`. |
+| 2026-09-26 | M3: comparison table keeps explicit ARIA table roles when restacked as cards on mobile | Some browsers drop table semantics when `display` changes. |
 
 ## 12. Milestones
 

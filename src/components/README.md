@@ -25,4 +25,9 @@ rules sit in `@layer components`, and uses only tokens from `src/styles/tokens.c
 - `OrderBar` — mobile summary bar + bottom-sheet `<dialog>`
 - `FormField` — label/hint/error wiring; `Timeline` — numbered steps (confirmation now, Process page in M3)
 
-**Planned** (docs/PRD.md §7.7, M3): `ValuePropGrid`, `ComparisonTable`, `TabbedSteps`, `FaqAccordion`.
+**Content pages (M3, built):**
+- `PageIntro` — eyebrow + h1 + lead for content pages
+- `ValuePropGrid`, `ComparisonTable` (restacks to cards < 720px), `GuaranteeTerms` (the `#guarantee` anchor)
+- `TabbedSteps` — WAI-ARIA tabs synced to `?tab=`; renders `Timeline`
+- `FaqAccordion` — native `<details>`, grouped; `ContactForm` — demo form with validation + success state
+- `FormField` also renders `as="select"` and `as="textarea"`

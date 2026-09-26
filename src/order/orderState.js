@@ -2,6 +2,7 @@
 // The total is always derived from the selection, never stored (docs/PRD.md §8).
 import { addons } from '../data/addons.js'
 import { tiers } from '../data/tiers.js'
+import { emailError } from '../lib/validation.js'
 
 export const emptyDetails = { name: '', email: '', currentTitle: '', targetRole: '' }
 
@@ -69,13 +70,11 @@ export function actionsFromQuery(searchParams) {
   return actions
 }
 
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
 export function validateDetails(details) {
   const errors = {}
   if (!details.name.trim()) errors.name = 'Enter your name.'
-  if (!details.email.trim()) errors.email = 'Enter your email address.'
-  else if (!EMAIL.test(details.email.trim())) errors.email = 'Enter an email address like name@example.com.'
+  const email = emailError(details.email)
+  if (email) errors.email = email
   if (!details.targetRole.trim()) errors.targetRole = 'Tell us the role you’re aiming for.'
   return errors
 }

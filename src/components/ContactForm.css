@@ -1,0 +1,61 @@
+@layer components {
+  .contact-form {
+    display: grid;
+    gap: var(--space-5);
+    padding: clamp(var(--space-6), 4vw, var(--space-10));
+    border-radius: var(--corner-md);
+    background: var(--surface-card);
+    box-shadow: var(--lift-2);
+  }
+
+  .contact-form__title {
+    font-size: 1.5rem;
+  }
+
+  .contact-form__row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+
+  .contact-form__submit {
+    justify-self: start;
+  }
+
+  .contact-form__note {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .contact-form--sent {
+    justify-items: start;
+    gap: var(--space-4);
+  }
+
+  .contact-form__done-icon {
+    color: var(--success);
+  }
+
+  .contact-form__done-title {
+    font-size: 1.5rem;
+  }
+
+  .contact-form__done-title:focus {
+    outline: none;
+  }
+
+  .contact-form__done-text {
+    max-width: 48ch;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 639px) {
+    .contact-form__row {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-form__submit {
+      width: 100%;
+    }
+  }
+}

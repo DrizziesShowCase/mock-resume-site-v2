@@ -1,0 +1,22 @@
+@layer components {
+  .page-intro {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-6);
+    padding-block: clamp(var(--space-12), 7vw, 88px) var(--space-12);
+  }
+
+  .page-intro__title {
+    max-width: 18ch;
+    font-size: var(--display-lg);
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+  }
+
+  .page-intro__lead {
+    max-width: 60ch;
+    font-size: var(--text-xl);
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+}

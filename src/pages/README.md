@@ -8,9 +8,9 @@ copy or prices themselves.
 |---|---|---|
 | `/` | `Home` | done (M1) |
 | `/pricing`, `/pricing/review`, `/pricing/confirmation` | `Pricing`, `PricingReview`, `PricingConfirmation` | done (M2) |
-| `/why-us` | `WhyUs` | M3 |
-| `/process` | `Process` | M3 |
-| `/faq` | `Faq` | M3 |
+| `/why-us` | `WhyUs` | done (M3) |
+| `/process` | `Process` | done (M3) |
+| `/faq` | `Faq` | done (M3) |
 | `*` | `NotFound` | done |
 
-Why Us, Process and FAQ are still `PagePlaceholder`s. `Pricing.css` holds the layout shared by the build and review pages.
+All v1 pages are built. `Pricing.css` holds the layout shared by the build and review pages; `PagePlaceholder` is now only used by `NotFound`.

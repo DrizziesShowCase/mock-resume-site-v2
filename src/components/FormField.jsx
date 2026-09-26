@@ -1,12 +1,14 @@
-import { AlertCircle } from 'lucide-react'
+import { AlertCircle, ChevronDown } from 'lucide-react'
 import './FormField.css'
 
 // Label above, hint and error below, all wired up with aria-describedby.
 // Errors pair color with an icon and text, never color alone.
-export function FormField({ id, label, hint, error, required = false, ...inputProps }) {
+// `as` picks the control: 'input' (default), 'textarea' or 'select' (pass <option>s as children).
+export function FormField({ id, label, hint, error, required = false, as = 'input', children, ...controlProps }) {
   const hintId = hint ? `${id}-hint` : undefined
   const errorId = error ? `${id}-error` : undefined
   const describedBy = [hintId, errorId].filter(Boolean).join(' ') || undefined
+  const Control = as
   return (
     <div className={`form-field${error ? ' form-field--error' : ''}`}>
       <label htmlFor={id} className="form-field__label">
@@ -18,14 +20,19 @@ export function FormField({ id, label, hint, error, required = false, ...inputPr
           {hint}
         </p>
       )}
-      <input
-        id={id}
-        className="form-field__input"
-        required={required}
-        aria-invalid={error ? true : undefined}
-        aria-describedby={describedBy}
-        {...inputProps}
-      />
+      <div className={`form-field__control form-field__control--${as}`}>
+        <Control
+          id={id}
+          className="form-field__input"
+          required={required}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={describedBy}
+          {...controlProps}
+        >
+          {children}
+        </Control>
+        {as === 'select' && <ChevronDown className="form-field__chevron" size={18} strokeWidth={1.75} aria-hidden="true" />}
+      </div>
       {error && (
         <p id={errorId} className="form-field__error">
           <AlertCircle size={16} strokeWidth={2} aria-hidden="true" />

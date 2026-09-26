@@ -3,10 +3,10 @@ import './Section.css'
 
 // A full-width page band. `tone` alternates paper and shade surfaces to give
 // the page rhythm without borders (docs/PRD.md §7.6).
-export function Section({ tone = 'paper', labelledBy, label, compact = false, className = '', children }) {
+export function Section({ id, tone = 'paper', labelledBy, label, compact = false, className = '', children }) {
   const classes = ['section', `section--${tone}`, compact ? 'section--compact' : '', className].filter(Boolean).join(' ')
   return (
-    <section className={classes} aria-labelledby={labelledBy} aria-label={label}>
+    <section id={id} className={classes} aria-labelledby={labelledBy} aria-label={label}>
       <div className="container">{children}</div>
     </section>
   )

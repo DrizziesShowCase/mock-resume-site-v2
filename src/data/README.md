@@ -13,8 +13,9 @@ change is a one-line edit.
 | `nav.js` | Header, Services mega menu and footer links (the menu is derived from tiers/add-ons) |
 | `testimonials.js` | Sample testimonials (`highlight` must be a substring of `quote`) |
 | `valueProps.js`, `comparison.js` | Why Us page |
-| `process.js` | Process tabs; résumé steps are reused on the order confirmation |
+| `process.js` | Process tabs (label, heading, steps); résumé steps are reused on the order confirmation |
 | `faq.js` | FAQ accordion groups |
+| `contact.js` | Contact form topics and response-time promise |
 | `logos.js` | Invented wordmarks for the logo strips |
 
 Everything here is fictional (docs/PRD.md §3): no real companies, people or logos.
