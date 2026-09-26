@@ -1,0 +1,47 @@
+@layer components {
+  .section {
+    padding-block: clamp(var(--space-16), 8vw, 104px);
+  }
+
+  .section--compact {
+    padding-block: clamp(var(--space-12), 5vw, var(--space-16));
+  }
+
+  .section--paper {
+    background: var(--surface-page);
+  }
+
+  .section--shade {
+    background: var(--surface-inset);
+  }
+
+  .section-header {
+    display: grid;
+    gap: var(--space-6);
+    margin-bottom: var(--space-10);
+  }
+
+  .section-header__main {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .section-header__title {
+    max-width: 20ch;
+    font-size: var(--display-md);
+  }
+
+  .section-header__lead {
+    max-width: 48ch;
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+  }
+
+  @media (min-width: 900px) {
+    .section-header--split {
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: var(--space-12);
+    }
+  }
+}

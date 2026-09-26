@@ -1,0 +1,51 @@
+@layer components {
+  .cta-band {
+    padding-block: clamp(var(--space-16), 7vw, var(--space-24));
+    background: var(--surface-inset);
+    border-top: 1px solid var(--rule);
+  }
+
+  .cta-band__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-8) var(--space-12);
+  }
+
+  .cta-band__copy {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .cta-band__title {
+    font-size: var(--display-md);
+  }
+
+  .cta-band__text {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+  }
+
+  .cta-band__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3) var(--space-6);
+  }
+
+  .cta-band__phone {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .cta-band__phone:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}

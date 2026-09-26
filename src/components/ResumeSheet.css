@@ -1,0 +1,110 @@
+@layer components {
+  .resume-sheet {
+    width: 100%;
+    height: auto;
+  }
+
+  .resume-sheet__name {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    fill: var(--ink);
+  }
+
+  .resume-sheet__meta {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    fill: var(--graphite);
+  }
+
+  .resume-sheet__label {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    fill: var(--ink);
+  }
+
+  .resume-sheet__role {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    fill: var(--ink);
+  }
+
+  .resume-sheet__bullet {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    fill: var(--graphite);
+  }
+
+  .resume-sheet__line {
+    fill: oklch(0.92 0.006 85);
+  }
+
+  .resume-sheet__hand {
+    font-family: 'Caveat', cursive;
+    font-size: 21px;
+    font-weight: 600;
+    fill: var(--redline);
+  }
+
+  .resume-sheet__hand--note {
+    font-size: 27px;
+  }
+
+  .resume-sheet__arrow {
+    fill: none;
+    stroke: var(--redline);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Red-pen strokes draw in once, like an editor marking the page. */
+  .resume-sheet__mark,
+  .redline-draw {
+    fill: none;
+    stroke: var(--redline);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: redline-draw 900ms var(--ease-settle) 500ms forwards;
+  }
+
+  .resume-sheet__mark--late {
+    animation-delay: 1100ms;
+  }
+
+  .resume-sheet__fade {
+    opacity: 0;
+    animation: redline-fade 500ms ease-out 1500ms forwards;
+  }
+
+  @keyframes redline-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes redline-fade {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .resume-sheet__mark,
+    .redline-draw {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+
+    .resume-sheet__fade {
+      animation: none;
+      opacity: 1;
+    }
+  }
+}

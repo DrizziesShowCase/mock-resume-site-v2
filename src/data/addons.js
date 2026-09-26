@@ -1,5 +1,6 @@
 // Optional services added on top of a résumé tier. `requires: 'tier'` means the
 // add-on is built from the new résumé, so the order flow asks for a tier first.
+// Add-ons with a `homeBlurb` are teased on the Home page.
 export const addons = [
   {
     id: 'cover',
@@ -31,6 +32,7 @@ export const addons = [
     name: 'Professional Bio',
     price: 179,
     blurb: 'Short and long versions for web and events.',
+    homeBlurb: 'Short and long bios for your site, talks and panels.',
     icon: 'UserRound',
   },
   {

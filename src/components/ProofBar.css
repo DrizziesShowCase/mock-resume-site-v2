@@ -1,0 +1,53 @@
+@layer components {
+  .proof-bar {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-block: 1px solid var(--rule);
+  }
+
+  .proof-bar__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: var(--space-6) var(--space-8);
+  }
+
+  .proof-bar__item:first-child {
+    padding-inline-start: 0;
+  }
+
+  .proof-bar__item + .proof-bar__item {
+    border-inline-start: 1px solid var(--rule);
+  }
+
+  .proof-bar__icon {
+    flex-shrink: 0;
+    color: var(--ink);
+  }
+
+  .proof-bar__title {
+    font-size: 15px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .proof-bar__text {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 899px) {
+    .proof-bar {
+      grid-template-columns: 1fr;
+    }
+
+    .proof-bar__item {
+      padding: var(--space-4) 0;
+    }
+
+    .proof-bar__item + .proof-bar__item {
+      border-inline-start: 0;
+      border-block-start: 1px solid var(--rule);
+    }
+  }
+}

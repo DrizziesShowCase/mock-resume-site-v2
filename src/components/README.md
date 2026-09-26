@@ -12,6 +12,12 @@ rules sit in `@layer components`, and uses only tokens from `src/styles/tokens.c
 - `Logo`, `GuaranteeSeal`, `Eyebrow` (résumé-style section label), `ButtonLink`
 - `PageMeta` — per-route `<title>`/description; `PagePlaceholder` — stand-in for unbuilt pages
 
-**Planned** (docs/PRD.md §7.7): `TierCard`, `AddonCard`, `OrderSheet`,
-`TestimonialCard`, `LogoStrip`, `ValuePropGrid`, `ComparisonTable`,
-`TabbedSteps`, `Timeline`, `FaqAccordion`, `FormField`, `CtaBand`, `ProofBar`.
+**Page building blocks (M1, built):**
+- `Section` / `SectionHeader` — page bands that alternate paper/shade, with eyebrow + heading
+- `Hero` + `ResumeSheet` (the redlined résumé SVG) and `ProofBar`
+- `TierCard` (display variant), `IncludedStrip`, `TestimonialCard`, `GuaranteeCallout`,
+  `ServiceCard`, `LogoStrip`, `CtaBand`
+- `Icon` — maps icon names from `src/data/` to lucide components
+
+**Planned** (docs/PRD.md §7.7): selectable `TierCard` variant, `AddonCard`, `OrderSheet` (M2);
+`ValuePropGrid`, `ComparisonTable`, `TabbedSteps`, `Timeline`, `FaqAccordion`, `FormField` (M3).

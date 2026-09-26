@@ -6,11 +6,11 @@ copy or prices themselves.
 
 | Route | Page | Milestone |
 |---|---|---|
-| `/` | `Home` | M1 |
+| `/` | `Home` | done (M1) |
 | `/pricing`, `/pricing/review`, `/pricing/confirmation` | `Pricing`, `PricingReview`, `PricingConfirmation` | M2 |
 | `/why-us` | `WhyUs` | M3 |
 | `/process` | `Process` | M3 |
 | `/faq` | `Faq` | M3 |
 | `*` | `NotFound` | done |
 
-Everything except `NotFound` is currently a `PagePlaceholder`.
+Pricing, Why Us, Process and FAQ are still `PagePlaceholder`s.
