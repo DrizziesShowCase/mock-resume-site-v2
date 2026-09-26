@@ -13,6 +13,7 @@ checkout/payment processing. Deployed as a static site to GitHub Pages.
 | Path | What's there |
 |---|---|
 | `docs/reference/resumespice-site-structure.md` | Source-of-truth crawl notes on the real resumespice.com — page templates, nav structure, component list, rebuild recommendations. Read this before building any page or component. |
+| `docs/PRD.md` | **v1 product spec** — scope, fictional brand (Shortlist Résumé Co.), page requirements, design system tokens, data model, milestones. Build against this. |
 | `docs/` | Project-level planning docs (see `docs/README.md`). |
 | `src/pages/` | One file per route/page (Home, Pricing, WhyUs, Process, etc.). Not yet populated — see `src/pages/README.md`. |
 | `src/components/` | Reusable UI pieces (PricingCard, TestimonialCard, LogoStrip, etc. — full list in `docs/reference/resumespice-site-structure.md` §4). Not yet populated — see `src/components/README.md`. |
