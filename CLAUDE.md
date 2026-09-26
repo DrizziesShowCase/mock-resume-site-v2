@@ -1,38 +1,44 @@
 # Mock Resume Site v2 — Project Map
 
-Corporate/professional mock rebuild of a ResumeSpice-style resume-writing business
-site. Built as a practice/portfolio project — not a real business, no real
+Corporate/professional mock of a résumé-writing business site, modeled on the
+structure of resumespice.com but branded as the fictional **Shortlist Résumé Co.**
+Built as a practice/portfolio project — not a real business, no real
 checkout/payment processing. Deployed as a static site to GitHub Pages.
 
-**Stack:** React + Vite. Plain CSS for now (no component library chosen yet).
-**Status:** Scaffold only — default Vite starter files still in place under
-`src/`. No real pages/components built yet. See "Next steps" below.
+**Stack:** React 19 + Vite, `react-router-dom` (HashRouter), `lucide-react` icons,
+self-hosted fonts via Fontsource. Plain CSS with cascade layers — no component library.
+**Status:** M0 (foundations) done — routing, design tokens, header/mega menu,
+mobile nav, footer, all content data, deploy workflow. Pages other than 404 are
+placeholders. Next is M1 (Home). See `docs/PRD.md` §12.
 
 ## Where things are
 
 | Path | What's there |
 |---|---|
-| `docs/reference/resumespice-site-structure.md` | Source-of-truth crawl notes on the real resumespice.com — page templates, nav structure, component list, rebuild recommendations. Read this before building any page or component. |
-| `docs/PRD.md` | **v1 product spec** — scope, fictional brand (Shortlist Résumé Co.), page requirements, design system tokens, data model, milestones. Build against this. |
-| `docs/` | Project-level planning docs (see `docs/README.md`). |
-| `src/pages/` | One file per route/page (Home, Pricing, WhyUs, Process, etc.). Not yet populated — see `src/pages/README.md`. |
-| `src/components/` | Reusable UI pieces (PricingCard, TestimonialCard, LogoStrip, etc. — full list in `docs/reference/resumespice-site-structure.md` §4). Not yet populated — see `src/components/README.md`. |
-| `src/data/` | Structured content (pricing tiers, testimonials, nav config) as JSON/JS, kept separate from markup per the rebuild doc's recommendation. Not yet populated — see `src/data/README.md`. |
-| `src/App.jsx`, `src/main.jsx` | Current default Vite starter entry points — will be replaced once routing/pages are built. |
-| `public/` | Static assets served as-is (favicon, etc.). |
+| `docs/PRD.md` | **v1 product spec** — scope, brand, page requirements, design system ("The Hiring Desk"), data model, milestones, acceptance criteria. Build against this. |
+| `docs/reference/resumespice-site-structure.md` | Crawl notes on the real resumespice.com — the structural reference the PRD was derived from. |
+| `src/styles/` | `tokens.css` (all design tokens), `base.css` (reset, base, utilities), `index.css` (declares layer order). |
+| `src/components/` | Reusable UI + site chrome (`Layout`, `SiteHeader`, `ServicesMenu`, `MobileNav`, `SiteFooter`, `ButtonLink`, …). See `src/components/README.md`. |
+| `src/pages/` | One component per route; routes are wired in `src/App.jsx`. |
+| `src/data/` | All site content (tiers, add-ons, testimonials, nav, FAQ, process steps, …). See `src/data/README.md`. |
+| `.github/workflows/deploy.yml` | Lint + build + deploy to GitHub Pages on push to `master`. |
+| `public/` | Static assets served as-is (favicon). |
 
-## Next steps (not done yet — for whenever the full build starts)
+## Next steps
 
-1. Add `react-router-dom` (or similar) and wire up routes in `src/pages/`.
-2. Build components in `src/components/` per the list in the reference doc.
-3. Move pricing/testimonial/nav content into `src/data/`.
-4. Set `base` in `vite.config.js` to the GitHub repo name once one exists, and add
-   a `.github/workflows/deploy.yml` for GitHub Pages deployment.
-5. Replace the default Vite starter markup in `App.jsx`/`main.jsx`.
+1. **M1 Home** — build the Home sections (PRD §6.1) and shared cards (TierCard, TestimonialCard, LogoStrip, CtaBand).
+2. **M2 Order flow** — `OrderProvider` + Pricing configurator, Order Sheet, review, confirmation, reducer tests (Vitest).
+3. **M3 Content pages** — Why Us, Process, FAQ & Contact.
+4. **M4 Polish** — motion, a11y audit, Lighthouse, README with screenshots.
+5. **Deploy** — create the GitHub repo, push, and set Settings → Pages → Source to "GitHub Actions". No repo name config is needed (`base: './'`).
 
 ## Conventions
 
 - Keep content (copy, prices, testimonials) in `src/data/`, not hardcoded in JSX —
   the real site repeats the same content 2-3x across pages; don't repeat that mistake.
+- Use tokens from `src/styles/tokens.css` — no raw colors, spacing or font values in component CSS.
+- Each component gets a sibling `.css` file wrapped in `@layer components { … }`.
+- HashRouter: never use bare `href="#id"` for in-page anchors (it's read as a route) —
+  use `<Link to="/page#id">`; `Layout` scrolls to the anchor.
 - Each folder with non-obvious contents gets its own short `README.md` explaining
   *why* it exists, not just what's in it (that part is visible from the file list).

@@ -1,0 +1,6 @@
+/* Layer order is declared once, here, so component CSS imported later
+   (in any order) still lands in the right layer. */
+@layer tokens, reset, base, components, utilities;
+
+@import './tokens.css';
+@import './base.css';

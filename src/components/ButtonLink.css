@@ -1,0 +1,70 @@
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    padding: 0 var(--space-5);
+    border: 1.5px solid transparent;
+    border-radius: var(--corner-md);
+    font-size: var(--text-md);
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      background-color var(--dur-quick) var(--ease-settle),
+      border-color var(--dur-quick) var(--ease-settle),
+      color var(--dur-quick) var(--ease-settle);
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  .btn--lg {
+    min-height: 54px;
+    padding: 0 28px;
+    font-size: var(--text-lg);
+  }
+
+  .btn--primary {
+    background: var(--surface-ink);
+    color: var(--text-on-ink);
+    box-shadow: var(--lift-2);
+  }
+
+  .btn--primary:hover {
+    background: var(--ink-soft);
+  }
+
+  .btn--secondary {
+    background: transparent;
+    border-color: var(--rule-strong);
+    color: var(--text-primary);
+  }
+
+  .btn--secondary:hover {
+    border-color: var(--ink);
+    background: var(--surface-inset);
+  }
+
+  .btn--on-ink {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .btn--on-ink:hover {
+    background: var(--paper-shade);
+  }
+
+  .btn__arrow {
+    transition: transform var(--dur-quick) var(--ease-settle);
+  }
+
+  .btn:hover .btn__arrow {
+    transform: translateX(2px);
+  }
+}

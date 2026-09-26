@@ -1,0 +1,99 @@
+@layer components {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    background: var(--surface-page);
+    border-bottom: 1px solid var(--rule);
+    transition: box-shadow var(--dur-open) var(--ease-settle);
+  }
+
+  .site-header[data-scrolled] {
+    box-shadow: var(--lift-2);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-12);
+    height: var(--header-height);
+  }
+
+  .site-header__nav {
+    flex: 1;
+  }
+
+  .site-header__links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+  .site-header__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: 44px;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-body);
+    text-decoration: none;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 10px;
+    cursor: pointer;
+    transition: color var(--dur-quick) var(--ease-settle);
+  }
+
+  .site-header__link:hover,
+  .site-header__link[aria-expanded='true'] {
+    color: var(--text-primary);
+  }
+
+  .site-header__link[aria-current='page'] {
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration-line: underline;
+  }
+
+  .site-header__phone {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .site-header__mobile {
+    display: none;
+  }
+
+  @media (max-width: 1180px) {
+    .site-header__inner {
+      gap: var(--space-8);
+    }
+
+    .site-header__phone {
+      display: none;
+    }
+  }
+
+  @media (max-width: 959px) {
+    .site-header__nav,
+    .site-header__cta {
+      display: none;
+    }
+
+    .site-header__mobile {
+      display: block;
+      margin-inline-start: auto;
+      margin-inline-end: calc(-1 * var(--space-2));
+    }
+  }
+}

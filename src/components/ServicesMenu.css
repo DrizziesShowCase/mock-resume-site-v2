@@ -1,0 +1,116 @@
+@layer components {
+  .services-menu__chevron {
+    transition: rotate var(--dur-quick) var(--ease-settle);
+  }
+
+  [aria-expanded='true'] > .services-menu__chevron {
+    rotate: 180deg;
+  }
+
+  /* Positioned against the sticky header, so it spans the full width. */
+  .services-menu__panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: var(--z-menu);
+    background: var(--surface-card);
+    border-block: 1px solid var(--rule);
+    box-shadow: var(--lift-3);
+    animation: services-menu-drop var(--dur-open) var(--ease-settle);
+  }
+
+  .services-menu__panel[hidden] {
+    display: none;
+  }
+
+  .services-menu__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: var(--space-12);
+    padding-block: var(--space-10) var(--space-12);
+  }
+
+  .services-menu__heading {
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .services-menu__list {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .services-menu__list--two {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-6);
+  }
+
+  .services-menu__link {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-inline: calc(-1 * var(--space-3));
+    padding: 10px var(--space-3);
+    border-radius: var(--corner-md);
+    text-decoration: none;
+    transition: background-color var(--dur-quick) var(--ease-settle);
+  }
+
+  .services-menu__link:hover {
+    background: var(--surface-inset);
+  }
+
+  .services-menu__label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .services-menu__meta {
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--text-secondary);
+  }
+
+  .services-menu__call {
+    display: grid;
+    gap: var(--space-1);
+    margin-top: var(--space-4);
+    padding: var(--space-4);
+    border-radius: var(--corner-md);
+    background: var(--surface-inset);
+    font-size: var(--text-sm);
+    color: var(--text-body);
+  }
+
+  .services-menu__phone {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .services-menu__hours {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  @keyframes services-menu-drop {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+  }
+}

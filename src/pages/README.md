@@ -1,12 +1,16 @@
 # src/pages/
 
-One file per route. Empty for now — planned pages, per
-`docs/reference/resumespice-site-structure.md` §3:
+One component per route, wired up in `src/App.jsx` inside the shared `Layout`.
+Pages compose components and read content from `src/data/`; they shouldn't hold
+copy or prices themselves.
 
-- `Home` — hero, testimonials, pricing cards, guarantee, cross-sell, logos
-- `Pricing` — multi-step tier + add-on configurator
-- `WhyUs` — long-form value prop + comparison table
-- `Process` — tabbed step-by-step content
-- `About`, `FAQ`, `Contact` — simpler content pages
+| Route | Page | Milestone |
+|---|---|---|
+| `/` | `Home` | M1 |
+| `/pricing`, `/pricing/review`, `/pricing/confirmation` | `Pricing`, `PricingReview`, `PricingConfirmation` | M2 |
+| `/why-us` | `WhyUs` | M3 |
+| `/process` | `Process` | M3 |
+| `/faq` | `Faq` | M3 |
+| `*` | `NotFound` | done |
 
-Routing isn't wired up yet (no router installed). See `CLAUDE.md` "Next steps".
+Everything except `NotFound` is currently a `PagePlaceholder`.

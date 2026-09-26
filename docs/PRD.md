@@ -93,7 +93,7 @@ opens a mega menu in v1.
 - **Services mega menu:** 3 columns of real v1 content: *Résumés* (3 tiers → deep-link to `/pricing?tier=`), *Add-ons* (5 items → deep-link to `/pricing?addon=`), *Not sure?* (link to Process + "Talk to a writer" phone CTA). Phase-2 service pages will replace the deep links.
 - **Phone CTA:** a `tel:` link using a 555-01xx fictional number. On mobile it becomes a sticky bottom bar ("Call a writer" | "Get started"), which puts the primary action in thumb reach (Fitts's law).
 - **Get started:** the only filled button in the header. Always routes to `/pricing`.
-- **Mobile (< 768px):** a hamburger opens a full-height sheet, with Services as a disclosure (accordion), not a hover menu.
+- **Mobile (< 960px):** a hamburger opens a full-height sheet, with Services as a disclosure (accordion), not a hover menu.
 - **Nav data** lives in `src/data/nav.js`. Header, mobile sheet, and footer all read from it.
 
 ### 5.3 Footer
@@ -331,7 +331,7 @@ is *derived* from state and never stored.
 - **Dependencies:** React 19 + Vite 8 (already scaffolded), plus `react-router-dom` and `lucide-react`. No UI library. CSS is plain, organized as `tokens.css`, `base.css`, and per-component CSS files, with `@layer tokens, base, components, utilities`.
 - **Fonts:** self-host via `@fontsource-variable/source-serif-4` and `@fontsource-variable/public-sans`, subset to Latin, `font-display: swap`.
 - **SEO:** per-route `<title>` and meta description with a `| Shortlist` suffix, set with React 19's native `<title>`/`<meta>` hoisting. Open Graph image.
-- **Deploy:** set `base: '/<repo-name>/'` in `vite.config.js` and add `.github/workflows/deploy.yml` (build → `actions/deploy-pages`).
+- **Deploy:** `base: './'` in `vite.config.js` (relative assets work under any repo name because HashRouter serves every page from `index.html`) and `.github/workflows/deploy.yml` (lint → build → `actions/deploy-pages`).
 - **Quality:** `oxlint` is clean. There are component tests for the order reducer (Vitest) at minimum.
 
 ## 11. Decisions Log
@@ -346,6 +346,9 @@ is *derived* from state and never stored.
 | 2026-09-25 | `HashRouter` | GitHub Pages lacks SPA rewrites. This is the simplest correct option. |
 | 2026-09-26 | Name confirmed: Shortlist Résumé Co. | Chosen from the proposed options. |
 | 2026-09-26 | No bundle discount in v1 | Keeps pricing simple: total = tier + add-ons. |
+| 2026-09-26 | Mockup approved; M0 built | Direction validated before building. |
+| 2026-09-26 | `base: './'` instead of a repo-name base | Removes the dependency on the repo name. |
+| 2026-09-26 | Hamburger below 960px, not 768px | Five nav items + CTA don't fit comfortably at tablet width. |
 
 ## 12. Milestones
 
@@ -369,5 +372,4 @@ is *derived* from state and never stored.
 - [ ] The portfolio disclaimer is visible in the footer of every page.
 
 ## 14. Open Questions
-1. **GitHub repo name:** not decided yet. It sets `base` in `vite.config.js`, so it is needed before the M0 deploy step.
-2. **Visual mockup (direction check):** Home hero + tier preview and a clickable Pricing configurator with the Order Sheet, at https://claude.ai/artifact/N55xtebLgFwAW3vnz6Limt. Waiting on feedback before M0.
+None open. The repo name no longer blocks deploy (`base: './'`); it's only needed when the GitHub repo is created.

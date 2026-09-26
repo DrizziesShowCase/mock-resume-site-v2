@@ -1,0 +1,34 @@
+@layer components {
+  .logo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    flex-shrink: 0;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .logo__word {
+    font-family: var(--font-serif);
+    font-size: 1.6875rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-display);
+    line-height: 1;
+  }
+
+  .logo__sub {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .logo--on-ink {
+    color: var(--text-on-ink);
+  }
+
+  .logo--on-ink .logo__sub {
+    color: var(--text-on-ink-muted);
+  }
+}

@@ -1,0 +1,97 @@
+/* "The Hiring Desk" design tokens — see docs/PRD.md §7.
+   Primitives are named for the domain; semantic aliases sit on top. */
+@layer tokens {
+  :root {
+    /* Primitives — the desk */
+    --paper: oklch(0.985 0.006 85); /* résumé stock — page canvas */
+    --paper-bright: oklch(1 0 0); /* fresh sheet — cards, order sheet */
+    --paper-shade: oklch(0.955 0.008 85); /* sheet underneath — insets, alt bands */
+    --ink: oklch(0.26 0.055 262); /* offer-letter navy */
+    --ink-soft: oklch(0.34 0.05 262); /* hover on ink surfaces */
+    --ink-body: oklch(0.36 0.02 262); /* long-form text, nav links */
+    --graphite: oklch(0.46 0.014 262); /* secondary text */
+    --pencil: oklch(0.58 0.01 262); /* large text / icons only */
+    --redline: oklch(0.53 0.17 30); /* edit marks, errors — never a decorative fill */
+    --brass: oklch(0.74 0.09 80); /* seal, featured tab — on ink only */
+    --notepad: oklch(0.95 0.02 255); /* selected-card tint, info callouts */
+    --focus-blue: oklch(0.55 0.15 255);
+
+    /* Semantic */
+    --text-primary: var(--ink);
+    --text-body: var(--ink-body);
+    --text-secondary: var(--graphite);
+    --text-on-ink: var(--paper);
+    --text-on-ink-muted: oklch(0.985 0.006 85 / 0.76);
+    --surface-page: var(--paper);
+    --surface-card: var(--paper-bright);
+    --surface-inset: var(--paper-shade);
+    --surface-ink: var(--ink);
+    --surface-selected: var(--notepad);
+    --rule: oklch(0.26 0.055 262 / 0.12);
+    --rule-strong: oklch(0.26 0.055 262 / 0.3);
+    --rule-on-ink: oklch(0.985 0.006 85 / 0.14);
+    --focus-ring: var(--focus-blue);
+    --danger: var(--redline);
+    --success: oklch(0.52 0.12 155);
+
+    /* Depth — paper on a desk: one soft shadow family */
+    --lift-1: 0 1px 2px oklch(0.26 0.05 262 / 0.06);
+    --lift-2: 0 2px 6px oklch(0.26 0.05 262 / 0.07), 0 1px 2px oklch(0.26 0.05 262 / 0.05);
+    --lift-3: 0 12px 32px oklch(0.26 0.05 262 / 0.12), 0 2px 6px oklch(0.26 0.05 262 / 0.06);
+
+    /* Radius — paper corners are nearly square */
+    --corner-sm: 3px;
+    --corner-md: 6px;
+    --corner-pill: 999px;
+
+    /* Spacing — 4px base */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-16: 64px;
+    --space-20: 80px;
+    --space-24: 96px;
+
+    /* Type */
+    --font-serif: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
+    --font-sans: 'Public Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --text-xs: 0.75rem; /* 12 */
+    --text-sm: 0.875rem; /* 14 */
+    --text-md: 1rem; /* 16 */
+    --text-lg: 1.125rem; /* 18 */
+    --text-xl: 1.25rem; /* 20 */
+    --display-sm: clamp(1.625rem, 1.3rem + 1.2vw, 2rem);
+    --display-md: clamp(2rem, 1.5rem + 2vw, 2.875rem);
+    --display-lg: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem);
+    --tracking-display: -0.02em;
+    --tracking-eyebrow: 0.14em;
+
+    /* Layout */
+    --content-max: 1200px;
+    --gutter: var(--space-6);
+    --header-height: 76px;
+
+    /* Motion — paper settling */
+    --ease-settle: cubic-bezier(0.2, 0, 0, 1);
+    --dur-quick: 150ms;
+    --dur-open: 220ms;
+
+    /* Stacking */
+    --z-sticky: 50;
+    --z-menu: 60;
+    --z-dialog: 100;
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --gutter: var(--space-4);
+      --header-height: 64px;
+    }
+  }
+}

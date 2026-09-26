@@ -1,18 +1,17 @@
 # src/components/
 
-Reusable UI pieces shared across pages. Empty for now — the component list
-below comes from `docs/reference/resumespice-site-structure.md` §4 and is the
-plan for what goes here, not what's built yet:
+Reusable UI shared across pages. Each component has a sibling `.css` file whose
+rules sit in `@layer components`, and uses only tokens from `src/styles/tokens.css`.
 
-- `PricingCard`, `AddOnCard` — pricing tier / add-on selection cards
-- `TestimonialCard` — pull-quote + attribution
-- `LogoStrip` — press logos / client-outcome logos
-- `ComparisonTable` — feature comparison table
-- `ValuePropGrid` / `ValuePropItem` — icon + title + one-liner grid
-- `TabbedSteps` — tab nav + numbered step list (Process page)
-- `NewsletterForm` — first/last/email signup
-- `GuaranteeBadge` — image + heading + short copy callout
-- `Header`, `Footer`, `Nav` — global layout pieces
+**Site chrome (M0, built):**
+- `Layout` — skip link, header, `<main>`, footer, mobile action bar; scroll/anchor handling on navigation
+- `SiteHeader` — sticky header; lifts on scroll; collapses to `MobileNav` below 960px
+- `ServicesMenu` — the Services mega menu (disclosure pattern, hover intent, Esc to close)
+- `MobileNav` — full-height `<dialog>` menu for small screens
+- `SiteFooter` — ink footer with link columns, guarantee and disclaimer
+- `Logo`, `GuaranteeSeal`, `Eyebrow` (résumé-style section label), `ButtonLink`
+- `PageMeta` — per-route `<title>`/description; `PagePlaceholder` — stand-in for unbuilt pages
 
-One component per file, named to match the list above where possible, so the
-mapping from doc to code stays obvious.
+**Planned** (docs/PRD.md §7.7): `TierCard`, `AddonCard`, `OrderSheet`,
+`TestimonialCard`, `LogoStrip`, `ValuePropGrid`, `ComparisonTable`,
+`TabbedSteps`, `Timeline`, `FaqAccordion`, `FormField`, `CtaBand`, `ProofBar`.
