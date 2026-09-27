@@ -380,7 +380,7 @@ is *derived* from state and never stored.
 | **Phase 2 (later)** | Individual service pages, a `/resources/recruiters/:city` programmatic route, blog/sample résumés, team/about, optional dark mode. |
 
 ## 13. Acceptance Criteria (v1 done when…)
-- [ ] All 5 pages + 404 are reachable from the nav on the deployed GitHub Pages URL. *(Verified locally against the production build; waiting on the repo + first deploy.)*
+- [x] All 5 pages + 404 are reachable from the nav on the deployed GitHub Pages URL. *(Checked 2026-09-27 at https://drizziesshowcase.github.io/mock-resume-site-v2/: nav, 404, footer anchors and a full demo order, no console errors.)*
 - [x] Choosing a tier and 2 add-ons on mobile and desktop shows the correct total. Refresh keeps it. Review → confirmation shows an order number, and "Start over" clears it. *(e2e: order-flow.spec.js)*
 - [x] LinkedIn-without-tier shows the dependency note. "Review" is disabled until a tier is chosen. *(e2e)*
 - [x] Deep links `?tier=`, `?addon=`, and `?tab=` preselect correctly. *(e2e)*

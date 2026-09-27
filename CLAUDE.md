@@ -7,9 +7,8 @@ checkout/payment processing. Deployed as a static site to GitHub Pages.
 
 **Stack:** React 19 + Vite, `react-router-dom` (HashRouter), `lucide-react` icons,
 self-hosted fonts via Fontsource. Plain CSS with cascade layers — no component library.
-**Status:** v1 complete (M0–M4). Every page built; unit + e2e suites pass;
-Lighthouse desktop 98–99/100/100/100. Remaining: create the GitHub repo and
-deploy. See `docs/PRD.md` §12–13.
+**Status:** v1 complete and live at https://drizziesshowcase.github.io/mock-resume-site-v2/ (deployed by CI from `master`).
+All PRD acceptance criteria met. Phase 2 ideas are in `docs/PRD.md` §12.
 
 ## Where things are
 
@@ -30,9 +29,9 @@ deploy. See `docs/PRD.md` §12–13.
 
 ## Next steps
 
-1. **Deploy** — create the GitHub repo, push, and set Settings → Pages → Source to "GitHub Actions". No repo name config is needed (`base: './'`).
-2. After the first deploy, make `og:image` in `index.html` an absolute URL and tick the last PRD acceptance criterion.
-3. Phase 2 ideas are listed in `docs/PRD.md` §12.
+1. Phase 2 ideas are listed in `docs/PRD.md` §12 (service pages, recruiter-by-city route, blog, dark mode).
+2. CI warns that its actions (checkout, setup-node, upload-artifact) run on Node 20; bump them to their Node 24 majors when convenient.
+3. Every push to `master` redeploys; pull requests run the checks only.
 
 ## Conventions
 

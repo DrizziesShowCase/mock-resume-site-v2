@@ -1,8 +1,10 @@
 # Shortlist Résumé Co.
 
 A marketing site and order flow for a résumé-writing service, built as a
-portfolio project. The structure is modeled on a real résumé-writing business;
-the brand, copy, prices, testimonials and logos are all invented.
+portfolio project. **Live: https://drizziesshowcase.github.io/mock-resume-site-v2/**
+
+The structure is modeled on a real résumé-writing business; the brand, copy,
+prices, testimonials and logos are all invented.
 
 > **Portfolio demo.** Shortlist Résumé Co. is a fictional company. No orders are
 > processed, no payment is taken, and forms send nothing anywhere.
