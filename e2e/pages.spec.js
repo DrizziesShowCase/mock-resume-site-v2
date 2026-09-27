@@ -104,8 +104,9 @@ test('process tabs: deep link, arrow keys, Home/End, URL sync', async ({ page },
   await expect(tab('Interview Prep')).toBeFocused()
   await expect(tab('Interview Prep')).toHaveAttribute('aria-selected', 'true')
   await expect(page).toHaveURL(/tab=interview-prep/)
+  // End then ArrowRight with no wait between them: the second key must move
+  // from the newly focused tab even before the URL has caught up.
   await page.keyboard.press('End')
-  await expect(tab('Career Coaching')).toBeFocused()
   await page.keyboard.press('ArrowRight')
   await expect(tab('Résumés')).toBeFocused()
   await expect(page).toHaveURL(/#\/process$/)
@@ -151,4 +152,20 @@ test('comparison table restacks as cards on mobile', async ({ page }, testInfo) 
   const display = await page.locator('.compare tbody tr').first().evaluate((el) => getComputedStyle(el).display)
   expect(display).toBe('block')
   await expect(page.getByRole('table')).toBeAttached()
+})
+
+test('the page has a title before any route has rendered', async ({ page }) => {
+  // Block the lazily loaded page chunk so the route can never render.
+  await page.route(/\/assets\/Faq-.*\.js$/, () => {})
+  await page.goto(route('/faq'))
+  await expect(page).toHaveTitle('Shortlist Résumé Co. — Professional résumé writing')
+  expect(await page.locator('title').count()).toBe(1)
+})
+
+test('every page keeps exactly one <title>', async ({ page }) => {
+  for (const path of ['/', '/why-us', '/pricing', '/faq']) {
+    await page.goto(route(path))
+    await expect(page.locator('h1')).toBeVisible()
+    expect(await page.locator('title').count(), path).toBe(1)
+  }
 })

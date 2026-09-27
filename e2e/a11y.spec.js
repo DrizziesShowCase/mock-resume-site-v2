@@ -30,6 +30,8 @@ for (const path of ['/', '/pricing', '/why-us', '/process', '/faq', '/no-such-pa
 
 test('axe: pricing with an order, including the blocked-LinkedIn state', async ({ page }) => {
   await withOrder(page, { tierId: null, addonIds: ['linkedin', 'cover'] }, '/pricing')
+  // The page is lazily loaded: audit the finished state, not the loading one.
+  await expect(page.getByText('Needs a résumé tier').first()).toBeAttached()
   await expectNoSeriousViolations(page, 'pricing (blocked)')
 })
 

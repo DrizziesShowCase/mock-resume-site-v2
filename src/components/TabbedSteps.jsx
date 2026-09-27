@@ -18,7 +18,11 @@ export function TabbedSteps({ tabs, label }) {
   }
 
   const onKeyDown = (e) => {
-    const index = tabs.indexOf(active)
+    // Move relative to the tab that has focus, not the one in the URL: the URL
+    // updates a beat after focus moves, so quick key presses would otherwise
+    // start from a stale tab.
+    const focused = tabs.findIndex((t) => tabRefs.current[t.id] === e.target)
+    const index = focused === -1 ? tabs.indexOf(active) : focused
     const moves = {
       ArrowRight: (index + 1) % tabs.length,
       ArrowLeft: (index - 1 + tabs.length) % tabs.length,

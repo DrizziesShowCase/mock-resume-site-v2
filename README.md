@@ -64,7 +64,7 @@ npm run preview      # serve the build
 ```bash
 npm run lint         # oxlint
 npm test             # Vitest: order logic, validation (26 tests)
-npm run test:e2e     # Playwright: order flow, pages, keyboard, axe, desktop + mobile (64 tests)
+npm run test:e2e     # Playwright: order flow, pages, keyboard, axe, desktop + mobile (68 tests)
 npm run screenshots  # regenerate docs/screenshots and the social-share image
 ```
 
